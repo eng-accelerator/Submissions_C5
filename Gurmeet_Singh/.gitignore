@@ -1,5 +1,0 @@
-# --- Python Specific ---
-__pycache__/
-.venv/
-.env
-output.txt

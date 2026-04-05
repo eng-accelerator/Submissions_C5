@@ -1,6 +1,0 @@
-RAG Assignments:
-
-1. assignment_1_vector_db_basics.ipynb 		--> https://colab.research.google.com/drive/1HuftOu04aaSCIuegfg0wOhznenLndisa#scrollTo=BzHjCSRVU9I2
-2. assignment_2_advanced_rag.ipynb 			--> https://colab.research.google.com/drive/1e2HLI38PDa8F_ScyztjY-Tl7spldUpo7#scrollTo=rECoKEZtpFw_
-3. assignment_3a_basic_gradio_rag.ipynb		--> https://colab.research.google.com/drive/1d0IOT6l8UmjS4x3PQ3YXwEqG09vkHf50#scrollTo=NH6XPIuoqkqu
-4. assignment_3b_advanced_gradio_rag.ipynb	--> https://colab.research.google.com/drive/1sO6o4b46V8BslSQh4HeCzkZ9QORrEq9q

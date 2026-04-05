@@ -1,0 +1,53 @@
+# Environments
+.env
+.venv/
+venv/
+env/
+
+# Python caching & bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+.pytest_cache/
+
+# Testing & Coverage
+.coverage
+htmlcov/
+.tox/
+nosetests.xml
+coverage.xml
+
+# System & OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs and databases
+*.log
+*.sqlite3
+*.db
+*.faiss
+*.pkl
+
+# Downloads / Auto-generated binaries
+cloudflared-linux-amd64.deb
+cloudflared
+*.exe
+*.dll
+*.so
+*.dylib
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Project specific artifacts
+compliance_audit.json
+metrics_export.csv

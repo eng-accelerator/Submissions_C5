@@ -1,0 +1,31 @@
+{
+  "authentication": {
+    "mfa_enabled": false,
+    "password_min_length": 6,
+    "password_complexity": false,
+    "session_timeout_minutes": 0,
+    "failed_login_lockout": false
+  },
+  "encryption": {
+    "data_at_rest": false,
+    "data_in_transit": "http_only",
+    "key_rotation_days": 0
+  },
+  "logging": {
+    "audit_logs_enabled": false,
+    "log_retention_days": 7,
+    "centralized_logging": false
+  },
+  "access_control": {
+    "rbac_enabled": false,
+    "principle_of_least_privilege": false,
+    "privileged_access_management": false,
+    "access_reviews_frequency": "never"
+  },
+  "network": {
+    "firewall_enabled": true,
+    "waf_enabled": false,
+    "network_segmentation": false,
+    "vpn_required_for_remote": false
+  }
+}
