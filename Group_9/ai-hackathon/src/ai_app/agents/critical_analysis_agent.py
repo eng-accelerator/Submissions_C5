@@ -4,7 +4,32 @@ from ai_app.agents.base import AgentBase
 from ai_app.agents.contradiction_checker_agent import ContradictionCheckerAgent
 from ai_app.agents.source_verifier_agent import SourceVerifierAgent
 from ai_app.domain.enums import ConfidenceLabel
-from ai_app.schemas.research import Claim, ResearchSession
+from ai_app.schemas.research import Claim, Contradiction, ResearchSession
+
+
+def _apply_contradiction_metadata(claims: list[Claim], contradictions: list[Contradiction]) -> None:
+    by_id = {c.id: c for c in claims}
+    for ctr in contradictions:
+        left = by_id.get(ctr.claim_a_id)
+        right = by_id.get(ctr.claim_b_id)
+        if not left or not right:
+            continue
+        for sid in right.supporting_source_ids:
+            if sid and sid not in left.contradicting_source_ids:
+                left.contradicting_source_ids.append(sid)
+        for sid in left.supporting_source_ids:
+            if sid and sid not in right.contradicting_source_ids:
+                right.contradicting_source_ids.append(sid)
+    for claim in claims:
+        involved = sum(1 for ctr in contradictions if ctr.claim_a_id == claim.id or ctr.claim_b_id == claim.id)
+        if involved:
+            claim.contested = True
+            claim.consensus_pct = max(18, 100 - involved * 28 - (12 if claim.weak_evidence else 0))
+            claim.trust_score = max(0, claim.trust_score - min(22, involved * 8 + (4 if claim.weak_evidence else 0)))
+        elif claim.contested:
+            claim.consensus_pct = min(claim.consensus_pct, 58)
+        if claim.weak_evidence and claim.consensus_pct > 78:
+            claim.consensus_pct = min(claim.consensus_pct, 76)
 
 
 class CriticalAnalysisAgent(AgentBase):
@@ -43,12 +68,11 @@ class CriticalAnalysisAgent(AgentBase):
                     evidence_summary=f"Primary evidence comes from {citation_summary}. Supporting snippet: {finding.quote_excerpt or finding.snippet or finding.content[:180]}",
                     contested=contested,
                     weak_evidence=weak_evidence,
+                    consensus_pct=100,
                     trust_score=min(100, confidence_pct + (3 if avg_credibility > 0.75 else 0) - (5 if contested else 0)),
                 )
             )
         session.claims.extend(claims)
-        session.contradictions.extend(await self.contradiction_checker.run(claims))
-        for claim in session.claims:
-            if claim.contested:
-                claim.contradicting_source_ids = claim.supporting_source_ids[:1]
+        session.contradictions.extend(await self.contradiction_checker.run(claims, session.sources))
+        _apply_contradiction_metadata(session.claims, session.contradictions)
         return session

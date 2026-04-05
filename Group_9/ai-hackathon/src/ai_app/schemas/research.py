@@ -61,16 +61,29 @@ class Claim(BaseModel):
     contested: bool = False
     weak_evidence: bool = False
     trust_score: int = 0
+    # 100 = broad agreement among cited sources; lower when paired with conflicting claims/sources.
+    consensus_pct: int = 100
 
 
 class Contradiction(BaseModel):
     id: str = Field(default_factory=lambda: f"ctr_{uuid4().hex}")
+    claim_a_id: str = ""
+    claim_b_id: str = ""
     claim_a: str
     source_a_id: str
     claim_b: str
     source_b_id: str
+    source_a_label: str = ""
+    source_b_label: str = ""
+    position_a: str = ""
+    position_b: str = ""
     analysis: str
     resolution: str | None = None
+    # Which side the system weights more: "a", "b", or "tie".
+    more_credible_side: str = "tie"
+    credibility_reasoning: str = ""
+    # 0 = strong disagreement; 1 = mild tension (heuristic).
+    consensus_score: float | None = None
 
 
 class Insight(BaseModel):
