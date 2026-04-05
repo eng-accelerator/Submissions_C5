@@ -1,0 +1,12 @@
+Jan 15 02:30:45 webserver sshd[12340]: Failed password for root from 185.220.101.45 port 42810 ssh2
+Jan 15 02:30:47 webserver sshd[12341]: Failed password for root from 185.220.101.45 port 42811 ssh2
+Jan 15 02:30:49 webserver sshd[12342]: Failed password for admin from 185.220.101.45 port 42812 ssh2
+Jan 15 02:30:51 webserver sshd[12343]: Failed password for ubuntu from 185.220.101.45 port 42813 ssh2
+Jan 15 02:30:53 webserver sshd[12344]: Failed password for pi from 185.220.101.45 port 42814 ssh2
+Jan 15 02:30:55 webserver sshd[12345]: Failed password for oracle from 185.220.101.45 port 42815 ssh2
+Jan 15 02:30:57 webserver sshd[12346]: Failed password for postgres from 185.220.101.45 port 42816 ssh2
+Jan 15 02:30:59 webserver sshd[12347]: Failed password for deploy from 185.220.101.45 port 42817 ssh2
+Jan 15 02:31:01 webserver sshd[12348]: Failed password for git from 185.220.101.45 port 42818 ssh2
+Jan 15 02:31:03 webserver sshd[12349]: Failed password for jenkins from 185.220.101.45 port 42819 ssh2
+Jan 15 02:31:05 webserver sshd[12350]: Accepted password for root from 185.220.101.45 port 42820 ssh2
+Jan 15 02:31:05 webserver sshd[12351]: pam_unix(sshd:session): session opened for user root
