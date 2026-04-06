@@ -1,0 +1,2 @@
+user_id,scope,source_id,income_type,employer,gross_monthly,net_monthly,frequency,confidence,effective_date,currency_code
+debt-stressed-002,private,set2-income,salary,Nova Retail,92000,71000,monthly,0.99,2026-03-01,INR

@@ -1,0 +1,3 @@
+user_id,scope,source_id,income_type,employer,gross_monthly,net_monthly,frequency,confidence,effective_date
+demo-user-001,private,sample-income,salary,Acme Systems,9800,7200,monthly,0.99,2026-03-01
+demo-user-001,private,sample-income,freelance,Independent,1200,900,monthly,0.91,2026-03-01

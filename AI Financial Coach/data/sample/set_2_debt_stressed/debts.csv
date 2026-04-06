@@ -1,0 +1,5 @@
+user_id,scope,source_id,debt_name,debt_type,balance,apr,minimum_payment,due_day,secured,confidence,currency_code
+debt-stressed-002,private,set2-debts,Credit Card One,credit_card,165000,32.0,9000,12,False,0.99,INR
+debt-stressed-002,private,set2-debts,Credit Card Two,credit_card,88000,28.0,4600,18,False,0.98,INR
+debt-stressed-002,private,set2-debts,Personal Loan,personal,240000,17.5,7800,8,False,0.99,INR
+debt-stressed-002,private,set2-debts,Bike Loan,auto,76000,11.2,3200,21,True,0.97,INR

@@ -1,0 +1,4 @@
+user_id,scope,source_id,asset_name,asset_type,institution,balance,liquidity_tier,risk_level,valuation_date,confidence,currency_code
+balanced-user-001,private,set1-assets,Savings Account,cash,Axis Bank,185000,high,low,2026-03-31,0.99,INR
+balanced-user-001,private,set1-assets,Equity Mutual Funds,investment,Groww,260000,medium,medium,2026-03-31,0.96,INR
+balanced-user-001,private,set1-assets,EPF,retirement,EPFO,340000,low,low,2026-03-31,0.95,INR

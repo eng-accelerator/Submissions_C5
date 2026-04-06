@@ -1,0 +1,39 @@
+services:
+  streamlit:
+    build:
+      context: .
+    command: ["streamlit", "run", "app.py", "--server.address=0.0.0.0", "--server.port=8501"]
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    volumes:
+      - ./:/app
+    depends_on:
+      - webhook
+
+  webhook:
+    build:
+      context: .
+    command: ["python", "run_webhooks.py"]
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./:/app
+
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:1.88.0
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - WEBHOOK_URL=http://localhost:5678/
+      - GENERIC_TIMEZONE=Asia/Calcutta
+    volumes:
+      - ./n8n:/home/node/.n8n
+    depends_on:
+      - webhook

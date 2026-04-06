@@ -1,0 +1,208 @@
+You are a principal AI architect, security‑aware system designer, and senior full‑stack engineer.
+
+Your task is to design and specify a complete, production‑grade AI system called:
+
+AI Financial Coach Agent
+
+This project must be realistic, secure, demo‑ready, and suitable for an investor presentation or senior engineering review.
+
+──────────────────────────────────
+PROJECT OVERVIEW
+──────────────────────────────────
+Build a personalized, multi‑agent AI financial advisor application.
+
+The system securely ingests user financial data (income, expenses, debts, assets, goals) from messy real‑world documents, normalizes it into clean tabular structures, applies secure Tabular RAG for reasoning, performs deterministic financial calculations, and produces clear, actionable financial advice via a live dashboard.
+
+The system must demonstrate:
+- Multi‑agent orchestration
+- Secure user‑specific data access
+- Tabular RAG with data injection
+- Deterministic math + LLM reasoning separation
+- Workflow automation
+- Live dashboarding
+- Guarded financial advice
+
+──────────────────────────────────
+MANDATORY TECH STACK (DO NOT CHANGE)
+──────────────────────────────────
+
+Data Ingestion & Processing:
+- PyPDF2 for PDF extraction
+- Pandas for tabular data normalization and validation
+- LangChain for document loaders, tools, and RAG pipelines
+
+Multi‑Agent Orchestration:
+- LangGraph for agent graphs, state transitions, and execution control
+
+Tabular RAG & Data Injection:
+- Extract clean data from messy PDFs and CSVs
+- Normalize into canonical Pandas DataFrames
+- Schema‑aware querying (not raw embeddings)
+- Inject only authorized rows into agent context
+
+Models & AI Inference:
+- Hugging Face models for:
+  - LLM reasoning and explanations
+  - Embeddings (optional hybrid RAG)
+  - Safety classifiers
+- Use Hugging Face Inference Endpoints or self‑hosted models
+
+Workflow Automation & Integrations:
+- n8n for:
+  - Event‑driven ingestion pipelines
+  - Background automation
+  - External API syncing
+  - Notifications and alerts
+  - Audit logging
+
+Calculations & External APIs:
+- Python REPL tools for deterministic calculations
+- yfinance for interest rates, benchmarks, and asset context
+
+Frontend / UX:
+- Streamlit for interactive dashboards and user workflows
+
+Security & Guardrails:
+- Ozero Fine‑Grained Authorization (FGA) for secure user data access
+- Llama Guard for input/output moderation and financial safety
+
+──────────────────────────────────
+SECURITY & AUTHORIZATION REQUIREMENTS
+──────────────────────────────────
+- All financial data is user‑scoped
+- Row‑level and table‑level authorization using Ozero FGA
+- Agents may only access data explicitly authorized
+- Authorization checks must occur:
+  1. Before Tabular RAG retrieval
+  2. Before calculations
+  3. Before LLM explanations
+- No cross‑user leakage is permitted
+
+──────────────────────────────────
+REQUIRED AGENTS
+──────────────────────────────────
+
+1. Financial Data Ingestion Agent
+   - Triggered via n8n workflows
+   - Accepts PDFs, CSVs, Excel files
+   - Uses PyPDF2 + Pandas + LangChain loaders
+   - Extracts messy financial tables
+   - Normalizes data into canonical schemas
+   - Tags rows with user_id and scope for FGA enforcement
+
+2. Tabular RAG & Data Injection Agent
+   - Performs schema‑aware Pandas queries
+   - Enforces Ozero FGA authorization
+   - Injects only relevant rows into downstream agents
+   - Prevents over‑retrieval and prompt leakage
+   - Avoids generic finance reasoning when user data exists
+
+3. Debt Analyzer Agent
+   - Operates only on authorized debt tables
+   - Uses Python REPL for:
+     - interest calculations
+     - payoff timelines
+     - scenario simulations
+   - Compares snowball vs avalanche strategies
+   - Outputs structured debt payoff plans
+
+4. Custom Savings Strategy Agent
+   - Analyzes disposable income and cash flow
+   - Calculates emergency fund targets
+   - Optimizes monthly savings plans
+   - Balances savings vs debt obligations
+
+5. Budget Optimization Agent
+   - Categorizes expenses from tabular data
+   - Detects overspending patterns
+   - Produces concrete line‑item budget suggestions
+   - Explains trade‑offs and lifestyle impact clearly
+
+6. Financial Coach Orchestrator Agent
+   - Implemented using LangGraph
+   - Controls execution order and dependencies
+   - Resolves conflicts between agent outputs
+   - Aggregates all results into a unified financial action plan
+   - Delegates explanation generation to Hugging Face LLMs
+
+OPTIONAL:
+- Goal Planning Agent
+- Financial Risk Awareness Agent
+
+──────────────────────────────────
+WORKFLOW AUTOMATION WITH n8n
+──────────────────────────────────
+- Trigger ingestion on file upload
+- Validate file types and sizes
+- Route data to extraction pipelines
+- Schedule background tasks (monthly analysis, alerts)
+- Log agent decisions for auditability
+- Send user notifications (email / push / Slack)
+
+──────────────────────────────────
+FUNCTIONAL REQUIREMENTS
+──────────────────────────────────
+- Multi‑agent execution via LangGraph
+- Secure Tabular RAG with data injection
+- Deterministic financial math in Python only
+- Hugging Face LLMs for explanations (not math)
+- User‑specific personalization and memory
+- Llama Guard enforcement on all advice
+- Automated workflows via n8n
+
+──────────────────────────────────
+NON‑FUNCTIONAL REQUIREMENTS
+──────────────────────────────────
+- Strong data privacy and isolation
+- Deterministic, auditable calculations
+- Scalable agent architecture
+- Cost‑aware model usage
+- Clear error handling and safe failures
+
+──────────────────────────────────
+DELIVERABLES (MUST INCLUDE ALL)
+──────────────────────────────────
+1. High‑level system architecture (textual diagram)
+2. LangGraph agent workflow and state machine
+3. Ozero FGA authorization model
+4. Tabular RAG design and data injection strategy
+5. Canonical data schemas:
+   - income
+   - expenses
+   - debts
+   - assets
+6. Sample prompt templates for each agent
+7. n8n workflow descriptions
+8. Hugging Face model selection rationale
+9. Streamlit dashboard design:
+   - charts
+   - tables
+   - insights
+   - action items
+10. End‑to‑end user journey:
+   upload → authorization → RAG → analysis → dashboard
+11. Guardrail enforcement layers
+12. Future extensibility ideas
+
+──────────────────────────────────
+IMPLEMENTATION RULES
+──────────────────────────────────
+- Use ONLY the specified tech stack
+- No placeholders such as “etc.” or “TBD”
+- Assume real users and real financial data
+- Prefer correctness and safety over creativity
+- Write as if the system will be built immediately
+
+──────────────────────────────────
+OUTPUT FORMAT
+──────────────────────────────────
+- Clean Markdown
+- Clear section headers
+- Bullet points where appropriate
+- Agent prompts in fenced code blocks
+- LangGraph flows in pseudocode
+- Fully implementation‑ready
+
+IMPORTANT:
+This is NOT a toy demo.
+Design this as a secure, serious AI financial coaching platform.

@@ -1,0 +1,4 @@
+user_id,scope,source_id,asset_name,asset_type,institution,balance,liquidity_tier,risk_level,valuation_date,confidence,currency_code
+high-saver-003,private,set3-assets,Emergency Fund,cash,ICICI Bank,720000,high,low,2026-03-31,0.99,INR
+high-saver-003,private,set3-assets,Equity Portfolio,investment,Zerodha,1850000,medium,high,2026-03-31,0.95,INR
+high-saver-003,private,set3-assets,PPF,retirement,SBI,540000,low,low,2026-03-31,0.98,INR

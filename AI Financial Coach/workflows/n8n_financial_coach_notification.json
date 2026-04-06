@@ -1,0 +1,65 @@
+{
+  "name": "AI Financial Coach Notification Hook",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "financial-coach-notify",
+        "httpMethod": "POST",
+        "responseMode": "responseNode"
+      },
+      "id": "NotificationWebhook",
+      "name": "Notification Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [300, 260]
+    },
+    {
+      "parameters": {
+        "jsCode": "const payload = $json.body?.payload || $json.payload || {};\nconst actionItems = payload.action_items || [];\nreturn [{ json: { message: `Financial coach run ${payload.run_id || 'unknown'} completed for ${payload.user_id || 'unknown user'}`, action_items: actionItems, moderation: payload.moderation || {} } }];"
+      },
+      "id": "FormatMessage",
+      "name": "Format Message",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [560, 260]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { received: true, notification: $json } }}"
+      },
+      "id": "RespondNotification",
+      "name": "Respond Notification",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [820, 260]
+    }
+  ],
+  "connections": {
+    "Notification Webhook": {
+      "main": [
+        [
+          {
+            "node": "Format Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Message": {
+      "main": [
+        [
+          {
+            "node": "Respond Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "1"
+}

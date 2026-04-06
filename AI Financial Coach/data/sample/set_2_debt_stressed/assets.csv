@@ -1,0 +1,3 @@
+user_id,scope,source_id,asset_name,asset_type,institution,balance,liquidity_tier,risk_level,valuation_date,confidence,currency_code
+debt-stressed-002,private,set2-assets,Savings Account,cash,HDFC Bank,18000,high,low,2026-03-31,0.99,INR
+debt-stressed-002,private,set2-assets,Provident Fund,retirement,EPFO,95000,low,low,2026-03-31,0.94,INR

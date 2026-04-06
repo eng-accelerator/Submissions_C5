@@ -1,0 +1,120 @@
+{
+  "name": "AI Financial Coach Ingestion And Analysis",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "financial-coach-upload",
+        "httpMethod": "POST",
+        "responseMode": "responseNode"
+      },
+      "id": "WebhookUpload",
+      "name": "Webhook Upload",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [260, 260]
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $json.body || $json;\nif (!body.user_id) throw new Error('user_id is required');\nif (!Array.isArray(body.files)) throw new Error('files must be an array');\nreturn [{ json: body }];"
+      },
+      "id": "ValidateRequest",
+      "name": "Validate Request",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [500, 260]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://webhook:8000/webhooks/n8n/ingest",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}"
+      },
+      "id": "IngestWebhook",
+      "name": "Call Ingest Webhook",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [760, 180]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://webhook:8000/webhooks/n8n/analyze",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { user_id: $json.user_id, query: $json.query || 'Create a safe debt payoff, savings, and budget plan.', files: $json.files, send_notifications: $json.send_notifications || false } }}"
+      },
+      "id": "AnalyzeWebhook",
+      "name": "Call Analysis Webhook",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [760, 340]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { ingestion: $('Call Ingest Webhook').item.json, analysis: $('Call Analysis Webhook').item.json } }}"
+      },
+      "id": "Respond",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1040, 260]
+    }
+  ],
+  "connections": {
+    "Webhook Upload": {
+      "main": [
+        [
+          {
+            "node": "Validate Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate Request": {
+      "main": [
+        [
+          {
+            "node": "Call Ingest Webhook",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Call Analysis Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call Ingest Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call Analysis Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "1"
+}

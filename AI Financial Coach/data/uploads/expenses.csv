@@ -1,0 +1,8 @@
+user_id,scope,source_id,category,merchant,amount,frequency,essentiality,confidence,transaction_date,currency_code
+balanced-user-001,private,set1-expenses,Housing,Rent,32000,monthly,essential,0.99,2026-03-01,INR
+balanced-user-001,private,set1-expenses,Groceries,Fresh Basket,12000,monthly,essential,0.98,2026-03-01,INR
+balanced-user-001,private,set1-expenses,Utilities,Electricity and Internet,6500,monthly,essential,0.95,2026-03-01,INR
+balanced-user-001,private,set1-expenses,Transport,Cab and Fuel,9000,monthly,essential,0.94,2026-03-01,INR
+balanced-user-001,private,set1-expenses,Dining,Restaurants,7000,monthly,discretionary,0.92,2026-03-01,INR
+balanced-user-001,private,set1-expenses,Shopping,Lifestyle,8500,monthly,discretionary,0.9,2026-03-01,INR
+balanced-user-001,private,set1-expenses,Subscriptions,Streaming and Apps,1800,monthly,discretionary,0.96,2026-03-01,INR

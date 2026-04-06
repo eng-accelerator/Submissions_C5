@@ -1,0 +1,3 @@
+user_id,scope,source_id,asset_name,asset_type,institution,balance,liquidity_tier,risk_level,valuation_date,confidence
+demo-user-001,private,sample-assets,Emergency Savings,cash,North Bank,4200,high,low,2026-03-31,0.99
+demo-user-001,private,sample-assets,401k,retirement,Workplace Plan,38200,low,medium,2026-03-31,0.96

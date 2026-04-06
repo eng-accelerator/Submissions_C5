@@ -1,0 +1,7 @@
+user_id,scope,source_id,category,merchant,amount,frequency,essentiality,confidence,transaction_date
+demo-user-001,private,sample-expenses,Housing,Rent,2100,monthly,essential,0.99,2026-03-01
+demo-user-001,private,sample-expenses,Groceries,FreshMart,650,monthly,essential,0.98,2026-03-01
+demo-user-001,private,sample-expenses,Dining,Restaurants,420,monthly,discretionary,0.92,2026-03-01
+demo-user-001,private,sample-expenses,Transport,Metro Fuel,360,monthly,essential,0.93,2026-03-01
+demo-user-001,private,sample-expenses,Streaming,Subscriptions,95,monthly,discretionary,0.95,2026-03-01
+demo-user-001,private,sample-expenses,Travel,Weekend Trips,300,monthly,discretionary,0.8,2026-03-01

@@ -1,0 +1,4 @@
+user_id,scope,source_id,debt_name,debt_type,balance,apr,minimum_payment,due_day,secured,confidence
+demo-user-001,private,sample-debts,Credit Card Platinum,credit_card,7200,22.99,210,18,False,0.99
+demo-user-001,private,sample-debts,Auto Loan,auto,11800,6.2,340,9,True,0.99
+demo-user-001,private,sample-debts,Student Loan,student,16400,4.8,180,12,False,0.97

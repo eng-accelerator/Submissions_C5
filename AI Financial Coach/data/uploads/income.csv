@@ -1,0 +1,3 @@
+user_id,scope,source_id,income_type,employer,gross_monthly,net_monthly,frequency,confidence,effective_date,currency_code
+balanced-user-001,private,set1-income,salary,Vertex Tech,180000,132000,monthly,0.99,2026-03-01,INR
+balanced-user-001,private,set1-income,bonus,Vertex Tech,20000,15000,monthly,0.88,2026-03-01,INR

@@ -1,0 +1,2 @@
+user_id,scope,source_id,debt_name,debt_type,balance,apr,minimum_payment,due_day,secured,confidence,currency_code
+high-saver-003,private,set3-debts,Home Loan,mortgage,4200000,7.3,52000,5,True,0.99,INR

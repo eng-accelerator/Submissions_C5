@@ -1,0 +1,7 @@
+user_id,scope,source_id,category,merchant,amount,frequency,essentiality,confidence,transaction_date,currency_code
+debt-stressed-002,private,set2-expenses,Housing,Rent,22000,monthly,essential,0.99,2026-03-01,INR
+debt-stressed-002,private,set2-expenses,Groceries,Daily Needs,9500,monthly,essential,0.97,2026-03-01,INR
+debt-stressed-002,private,set2-expenses,Utilities,Phone and Power,4200,monthly,essential,0.95,2026-03-01,INR
+debt-stressed-002,private,set2-expenses,Transport,Metro and Fuel,5200,monthly,essential,0.93,2026-03-01,INR
+debt-stressed-002,private,set2-expenses,Dining,Takeout,4800,monthly,discretionary,0.89,2026-03-01,INR
+debt-stressed-002,private,set2-expenses,Shopping,Online Orders,6500,monthly,discretionary,0.88,2026-03-01,INR
