@@ -55,7 +55,11 @@ ZeroDay Armor incorporates standard enterprise-grade SOC guardrails simulating r
 2. Initialize and open your python environment:
    ```bash
    python -m venv venv
-   source venv/bin/activate
+   On mac:
+     source venv/bin/activate
+   On PC:
+     .\venv\Scripts\activate
+     # If you get error running scripts, run VSC as admin and execute the command 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned' and reply y.
    ```
 3. Install the dependencies exactly.
    ```bash
